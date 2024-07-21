@@ -31,7 +31,10 @@ class SettingsView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Настройки', style: context.s36w800.copyWith(color: colors_3)),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Настройки', style: context.s36w800.copyWith(color: colors_3, letterSpacing: -2.w)),
+              ),
               SizedBox(height: 24.h),
               GestureDetector(
                 onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.privacyPolicyUri),

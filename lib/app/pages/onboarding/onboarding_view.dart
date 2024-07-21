@@ -69,90 +69,99 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Spacer(),
-          SizedBox(
-            height: 594.h,
-            child: PageView(
-              controller: controller,
-              children: const [
-                Page1(),
-                Page2(),
-                Page3(),
-              ],
+    return Stack(
+      children: [
+        Image.asset(
+          'assets/images/bg.png',
+          width: 375.w,
+          height: 812.h,
+          fit: BoxFit.cover,
+        ),
+        Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: controller,
+                children: const [
+                  Page1(),
+                  Page2(),
+                  Page3(),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 32.h),
-          if (start) ...[
-            FilledButton(
-              onPressed: () async {
-                Settings settings = Hive.box<Settings>(Boxes.settings).getAt(0)!;
-                settings.showOnboarding = false;
-                settings.save();
-                AutoRouter.of(context).replace(const MainView());
-              },
-              style: context.extraBtn,
-              child: const Text('Начать'),
+            SizedBox(height: 24.h),
+            if (start) ...[
+              FilledButton(
+                onPressed: () async {
+                  Settings settings = Hive.box<Settings>(Boxes.settings).getAt(0)!;
+                  settings.showOnboarding = false;
+                  settings.save();
+                  AutoRouter.of(context).replace(const MainView());
+                },
+                style: context.extraBtn,
+                child: const Text('Начать'),
+              ),
+            ] else ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FilledButton(
+                    onPressed: () async => AutoRouter.of(context).replace(const MainView()),
+                    style: context.extraBtn.copyWith(
+                      minimumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
+                      maximumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
+                      backgroundColor: const WidgetStatePropertyAll(colors_3),
+                      foregroundColor: const WidgetStatePropertyAll(colors_2),
+                    ),
+                    child: const Text('Пропустить'),
+                  ),
+                  SizedBox(width: 21.w),
+                  FilledButton(
+                    onPressed: () async {
+                      controller.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    style: context.extraBtn.copyWith(
+                      minimumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
+                      maximumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
+                    ),
+                    child: const Text('Далее'),
+                  ),
+                ],
+              )
+            ],
+            SizedBox(height: 14.h),
+            DefaultTextStyle(
+              style: context.s8w400.copyWith(color: colors_3),
+              child: IntrinsicHeight(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 155.w,
+                      child: GestureDetector(
+                        onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.termsOfUseUri),
+                        child: Text('Условия использования', textAlign: TextAlign.right, style: context.s8w400.copyWith(color: colors_3)),
+                      ),
+                    ),
+                    VerticalDivider(color: colors_2, thickness: 0.3.h, width: 12.h),
+                    SizedBox(
+                      width: 155.w,
+                      child: GestureDetector(
+                        onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.privacyPolicyUri),
+                        child: Text('Политика конфиденциальности', textAlign: TextAlign.left, style: context.s8w400.copyWith(color: colors_3)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ] else ...[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FilledButton(
-                  onPressed: () async => AutoRouter.of(context).replace(const MainView()),
-                  style: context.extraBtn.copyWith(
-                    minimumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
-                    maximumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
-                    backgroundColor: const WidgetStatePropertyAll(colors_3),
-                    foregroundColor: const WidgetStatePropertyAll(colors_2),
-                  ),
-                  child: const Text('Пропустить'),
-                ),
-                SizedBox(width: 21.w),
-                FilledButton(
-                  onPressed: () async {
-                    controller.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  style: context.extraBtn.copyWith(
-                    minimumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
-                    maximumSize: WidgetStatePropertyAll(Size(164.w, 46.h)),
-                  ),
-                  child: const Text('Далее'),
-                ),
-              ],
-            )
+            SizedBox(height: 44.h),
           ],
-          SizedBox(height: 14.h),
-          IntrinsicHeight(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 155.w,
-                  child: GestureDetector(
-                    onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.termsOfUseUri),
-                    child: Text('Условия использования', textAlign: TextAlign.right, style: context.s8w400.copyWith(color: colors_3)),
-                  ),
-                ),
-                VerticalDivider(color: colors_2, thickness: 0.3.h, width: 12.h),
-                SizedBox(
-                  width: 155.w,
-                  child: GestureDetector(
-                    onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.privacyPolicyUri),
-                    child: Text('Политика конфиденциальности', textAlign: TextAlign.left, style: context.s8w400.copyWith(color: colors_3)),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 44.h),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

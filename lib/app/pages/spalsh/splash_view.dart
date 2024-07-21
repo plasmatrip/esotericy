@@ -44,12 +44,11 @@ class _SplashViewState extends State<SplashView> {
             if (!mounted) {
               return;
             }
-            // if (Hive.box<Settings>(Boxes.settings).getAt(0)!.showOnboarding) {
-            //   AutoRouter.of(context).replace(const OnBoardingView());
-            // } else {
-            //   AutoRouter.of(context).replace(const MainView());
-            // }
-            AutoRouter.of(context).replace(const OnBoardingView());
+            if (Hive.box<Settings>(Boxes.settings).getAt(0)!.showOnboarding) {
+              AutoRouter.of(context).replace(const OnBoardingView());
+            } else {
+              AutoRouter.of(context).replace(const MainView());
+            }
           },
         );
       },

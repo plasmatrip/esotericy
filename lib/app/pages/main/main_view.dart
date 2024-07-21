@@ -16,6 +16,10 @@ class _MainView extends State<MainView> {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: const [
+        DiaryView(),
+        CardsView(),
+        FortuneTellingView(),
+        NewsView(),
         SettingsView(),
       ],
       builder: (context, child) {

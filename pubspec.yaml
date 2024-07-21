@@ -124,3 +124,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Neue Machina
+      fonts:
+        - asset: assets/fonts/NeueMachina-Light.otf
+        - asset: assets/fonts/NeueMachina-Regular.otf
+        - asset: assets/fonts/NeueMachina-Ultrabold.otf
+

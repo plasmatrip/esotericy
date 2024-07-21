@@ -19,6 +19,7 @@ extension UI on BuildContext {
   TextStyle get s12w500 => TextStyle(fontSize: 12.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w500);
   TextStyle get s12w400 => TextStyle(fontSize: 12.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w400);
   TextStyle get s12w300 => TextStyle(fontSize: 12.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w300);
+  TextStyle get s11w500 => TextStyle(fontSize: 11.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w500);
   TextStyle get s11w400 => TextStyle(fontSize: 11.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w400);
   TextStyle get s8w400 => TextStyle(fontSize: 8.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w400);
 

@@ -10,6 +10,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: MainView.page,
           children: [
+            AutoRoute(page: DiaryView.page),
+            AutoRoute(page: CardsView.page),
+            AutoRoute(page: FortuneTellingView.page),
+            AutoRoute(page: NewsView.page),
             AutoRoute(page: SettingsView.page),
           ],
         ),

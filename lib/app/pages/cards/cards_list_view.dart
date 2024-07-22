@@ -56,11 +56,22 @@ class CardsListView extends StatelessWidget {
                         runSpacing: 14.h,
                         children: [
                           for (String image in imagesList) ...[
-                            Image.asset(
-                              image,
+                            Image(
+                              image: AssetImage(image),
                               width: 72.w,
                               height: 120.h,
+                              loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
                             ),
+                            // FutureBuilder(
+                            //   future: Future.delayed(Duration(seconds: 3)),
+                            //   builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
+                            // ? Image.asset(
+                            //     image,
+                            //     width: 72.w,
+                            //     height: 120.h,
+                            //   )
+                            // : CircularProgressIndicator(),
+                            // ),
                           ],
                         ],
                       ),

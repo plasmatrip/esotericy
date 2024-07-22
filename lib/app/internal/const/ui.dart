@@ -25,10 +25,10 @@ extension UI on BuildContext {
 
   ButtonStyle get extraBtn => FilledButton.styleFrom(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-        backgroundColor: colors_5,
-        foregroundColor: colors_4,
-        disabledBackgroundColor: colors_2,
-        disabledForegroundColor: colors_3,
+        backgroundColor: colors_2,
+        foregroundColor: colors_3,
+        disabledBackgroundColor: colors_5,
+        disabledForegroundColor: colors_4,
         minimumSize: Size(343.w, 46.h),
         maximumSize: Size(343.w, 46.h),
         shape: RoundedRectangleBorder(

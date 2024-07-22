@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:esotericy/app/internal/const/ui.dart';
 import 'package:esotericy/app/pages/main/widgets/navigation.dart';
 import 'package:esotericy/app/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,14 @@ class _MainView extends State<MainView> {
           extendBody: true,
           body: child,
           bottomNavigationBar: Navigation(tabsRouter: tabsRouter),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: tabsRouter.activeIndex == 1
+              ? FilledButton(
+                  onPressed: () async => AutoRouter.of(context).push(const AddLayoutView()),
+                  style: context.extraBtn,
+                  child: const Text('Добавить расклад'),
+                )
+              : null,
         );
       },
     );

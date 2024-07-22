@@ -2,7 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
 import 'package:esotericy/app/repository/cards_repo.dart';
-import 'package:esotericy/app/repository/habit_repo.dart';
+import 'package:esotericy/app/repository/notes_repo.dart';
 import 'package:esotericy/app/routing/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => HabitRepo()),
+          ChangeNotifierProvider(create: (context) => NotesRepo()),
           ChangeNotifierProvider(create: (context) => CardsRepo()),
         ],
         builder: (context, child) {

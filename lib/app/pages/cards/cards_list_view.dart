@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
-import 'package:esotericy/app/internal/const/ui.dart';
 import 'package:esotericy/app/internal/widgets/blur_comtainer.dart';
+import 'package:esotericy/app/models/cards.dart';
 import 'package:esotericy/app/pages/cards/widgets/types_ofcards_list.dart';
 import 'package:esotericy/app/repository/cards_repo.dart';
+import 'package:esotericy/app/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -55,23 +56,24 @@ class CardsListView extends StatelessWidget {
                         spacing: 8.w,
                         runSpacing: 14.h,
                         children: [
-                          for (String image in imagesList) ...[
-                            Image(
-                              image: AssetImage(image),
-                              width: 72.w,
-                              height: 120.h,
-                              loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                          for (Cards card in imagesList) ...[
+                            GestureDetector(
+                              onTap: () async => AutoRouter.of(context).push(SelectedCardView(card: card)),
+                              child: Image(
+                                image: AssetImage(card.image),
+                                width: 72.w,
+                                height: 120.h,
+                                loadingBuilder: (context, child, loadingProgress) => loadingProgress == null
+                                    ? child
+                                    : SizedBox(
+                                        width: 72.w,
+                                        height: 120.h,
+                                        child: const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      ),
+                              ),
                             ),
-                            // FutureBuilder(
-                            //   future: Future.delayed(Duration(seconds: 3)),
-                            //   builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                            // ? Image.asset(
-                            //     image,
-                            //     width: 72.w,
-                            //     height: 120.h,
-                            //   )
-                            // : CircularProgressIndicator(),
-                            // ),
                           ],
                         ],
                       ),

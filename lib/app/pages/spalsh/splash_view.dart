@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:esotericy/app/internal/const/boxes.dart';
 import 'package:esotericy/app/models/settings.dart';
+import 'package:esotericy/app/repository/cards_repo.dart';
 import 'package:esotericy/app/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class SplashView extends StatefulWidget {
@@ -25,6 +27,7 @@ class _SplashViewState extends State<SplashView> {
       (_) async {
         Future.delayed(const Duration(seconds: 1)).whenComplete(
           () async {
+            context.read<CardsRepo>().initImages();
             final Directory applicationDirectory = await getApplicationDocumentsDirectory();
             Settings settings;
             if (Hive.box<Settings>(Boxes.settings).values.isEmpty) {

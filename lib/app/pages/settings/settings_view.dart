@@ -39,6 +39,8 @@ class SettingsView extends StatelessWidget {
               GestureDetector(
                 onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.privacyPolicyUri),
                 child: BlurContainer(
+                  width: 343.w,
+                  height: 52.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -52,6 +54,8 @@ class SettingsView extends StatelessWidget {
               GestureDetector(
                 onTap: () async => openUrl(Hive.box<Settings>(Boxes.settings).getAt(0)!.termsOfUseUri),
                 child: BlurContainer(
+                  width: 343.w,
+                  height: 52.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -70,6 +74,8 @@ class SettingsView extends StatelessWidget {
                   }
                 },
                 child: BlurContainer(
+                  width: 343.w,
+                  height: 52.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

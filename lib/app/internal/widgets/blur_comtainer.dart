@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BlurContainer extends StatelessWidget {
-  const BlurContainer({required this.child, super.key, this.width, this.height, this.padding, this.color});
+  const BlurContainer({required this.child, this.height, super.key, this.width, this.padding, this.color});
 
   final double? width;
   final double? height;
@@ -22,8 +22,8 @@ class BlurContainer extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
         child: Container(
-          width: width ?? 343.w,
-          height: height ?? 52.h,
+          width: width,
+          height: height,
           padding: padding ?? EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
           decoration: ShapeDecoration(
             color: color ?? shapeMono.withOpacity(0.4),

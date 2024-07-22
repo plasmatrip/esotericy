@@ -98,6 +98,8 @@ flutter:
     - assets/images/cards/minor_arcana/pentacles/
     - assets/images/cards/minor_arcana/swords/
     - assets/images/cards/minor_arcana/wands/
+    - assets/images/news/
+    - assets/vectors/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

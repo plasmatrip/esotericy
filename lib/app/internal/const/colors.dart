@@ -9,3 +9,4 @@ const colors_3 = Color(0xFFFFFFFF);
 const colors_4 = Color(0xFF9C859E);
 const colors_5 = Color(0xFF4E3154);
 const colors_6 = Color(0xFFFE3C36);
+const stroke = Color(0x999C859E);

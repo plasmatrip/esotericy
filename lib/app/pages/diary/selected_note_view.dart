@@ -68,7 +68,7 @@ class _SelectedNoteViewState extends State<SelectedNoteView> {
                   behavior: HitTestBehavior.opaque,
                   onTap: () async {
                     context.read<NotesRepo>().edit(note.key);
-                    var result = await AutoRouter.of(context).push(AddNoteView());
+                    var result = await AutoRouter.of(context).push(const AddNoteView());
                     if (result != null && context.mounted) {
                       setState(() {
                         note = context.read<NotesRepo>().repo.get(widget.noteKey);

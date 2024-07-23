@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
-import 'package:esotericy/app/internal/widgets/blur_comtainer.dart';
-import 'package:esotericy/app/internal/widgets/date_dialog.dart';
 import 'package:esotericy/app/pages/diary/widgets/calendar_button.dart';
 import 'package:esotericy/app/pages/diary/widgets/fields/search_field.dart';
 import 'package:esotericy/app/pages/diary/widgets/new_note_button.dart';

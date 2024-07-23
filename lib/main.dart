@@ -1,10 +1,12 @@
 import 'package:esotericy/app/app.dart';
 import 'package:esotericy/app/data/cards_data.dart';
+import 'package:esotericy/app/data/ft_data.dart';
 import 'package:esotericy/app/data/ft_group_data.dart';
 import 'package:esotericy/app/data/layout_data.dart';
 import 'package:esotericy/app/data/news_data.dart';
 import 'package:esotericy/app/internal/const/boxes.dart';
 import 'package:esotericy/app/models/cards.dart';
+import 'package:esotericy/app/models/ft.dart';
 import 'package:esotericy/app/models/ft_group.dart';
 import 'package:esotericy/app/models/layout.dart';
 import 'package:esotericy/app/models/news.dart';
@@ -26,6 +28,7 @@ void main() async {
   Hive.registerAdapter<Layout>(LayoutAdapter());
   Hive.registerAdapter<Notes>(NotesAdapter());
   Hive.registerAdapter<FTGroup>(FTGroupAdapter());
+  Hive.registerAdapter<FT>(FTAdapter());
 
   await Hive.openBox<Settings>(Boxes.settings);
   await Hive.openBox<News>(Boxes.news);
@@ -33,6 +36,7 @@ void main() async {
   await Hive.openBox<Layout>(Boxes.layout);
   await Hive.openBox<Notes>(Boxes.notes);
   await Hive.openBox<FTGroup>(Boxes.ftgroup);
+  await Hive.openBox<FT>(Boxes.ft);
 
   if (Hive.box<News>(Boxes.news).isEmpty) {
     await NewsData.addData();
@@ -45,6 +49,9 @@ void main() async {
   }
   if (Hive.box<FTGroup>(Boxes.ftgroup).isEmpty) {
     await FTGroupData.addData();
+  }
+  if (Hive.box<FT>(Boxes.ft).isEmpty) {
+    await FTData.addData();
   }
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(

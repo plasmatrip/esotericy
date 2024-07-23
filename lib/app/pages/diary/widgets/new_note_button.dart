@@ -16,7 +16,7 @@ class NewNoteButton extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () async => AutoRouter.of(context).push(const AddNoteView()),
       child: BlurContainer(
-        width: 40.w,
+        width: 40.h,
         height: 32.h,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
         child: SvgPicture.asset('assets/icons/Document Add.svg', width: 24.w, height: 24.h),

@@ -19,7 +19,7 @@ class _MainView extends State<MainView> {
       routes: const [
         DiaryView(),
         CardsView(),
-        FortuneTellingView(),
+        FortuneTellingGroupView(),
         NewsView(),
         SettingsView(),
       ],

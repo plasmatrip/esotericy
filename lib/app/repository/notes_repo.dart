@@ -1,4 +1,5 @@
 import 'package:esotericy/app/internal/const/boxes.dart';
+import 'package:esotericy/app/internal/utils.dart';
 import 'package:esotericy/app/models/notes.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -123,6 +124,8 @@ class NotesRepo with ChangeNotifier {
   }
 
   Iterable notes() {
-    return repo.values; //.where((element) => (element as Notes));
+    return repo.values
+        .where((element) => datesIsEqual((element as Notes).date, _selectedDate))
+        .where((element) => _searchString.isEmpty ? true : element.tag.contains(_searchString));
   }
 }

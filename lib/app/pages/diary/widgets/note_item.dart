@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
 import 'package:esotericy/app/internal/widgets/blur_comtainer.dart';
+import 'package:esotericy/app/internal/widgets/delete_dalog.dart';
 import 'package:esotericy/app/internal/widgets/edit_delete_dialog.dart';
 import 'package:esotericy/app/models/notes.dart';
 import 'package:esotericy/app/repository/notes_repo.dart';
@@ -56,14 +57,22 @@ class NoteItem extends StatelessWidget {
                           context.read<NotesRepo>().edit(note.key);
                           AutoRouter.of(context).push(const AddNoteView());
                         case 'DELETE':
+                          var result = await deleteDialog(context, 'Вы действительно хотите удалить запись?');
+                          if (result != null && context.mounted) {
+                            context.read<NotesRepo>().delete(note.key);
+                          }
                       }
                     }
                   },
-                  child: SvgPicture.asset(
-                    key: globalKey,
-                    'assets/icons/Menu Dots.svg',
-                    width: 24.w,
+                  child: SizedBox(
+                    width: 14.w,
                     height: 24.h,
+                    child: SvgPicture.asset(
+                      key: globalKey,
+                      'assets/icons/Menu Dots.svg',
+                      width: 24.w,
+                      height: 24.h,
+                    ),
                   ),
                 ),
               ],
@@ -103,10 +112,11 @@ class NoteItem extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                             child: Center(
-                                child: Text(
-                              '+${note.cards.length - 2}',
-                              style: context.s12w400.copyWith(color: colors_3),
-                            )),
+                              child: Text(
+                                '+${note.cards.length - 2}',
+                                style: context.s11w400.copyWith(color: colors_3, letterSpacing: -1.w),
+                              ),
+                            ),
                           ),
                         ),
                       ],

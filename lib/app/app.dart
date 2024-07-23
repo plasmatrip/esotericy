@@ -2,10 +2,12 @@ import 'package:device_preview/device_preview.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
 import 'package:esotericy/app/repository/cards_repo.dart';
+import 'package:esotericy/app/repository/ft_repo.dart';
 import 'package:esotericy/app/repository/notes_repo.dart';
 import 'package:esotericy/app/routing/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
@@ -33,6 +35,7 @@ class _AppState extends State<App> {
         providers: [
           ChangeNotifierProvider(create: (context) => NotesRepo()),
           ChangeNotifierProvider(create: (context) => CardsRepo()),
+          ChangeNotifierProvider(create: (context) => FTRepo()),
         ],
         builder: (context, child) {
           return DevicePreview(
@@ -41,6 +44,7 @@ class _AppState extends State<App> {
                 return ScreenUtilInit(
                   designSize: const Size(375, 812),
                   builder: (context, child) {
+                    debugPaintSizeEnabled = false;
                     return MaterialApp.router(
                       debugShowCheckedModeBanner: false,
                       title: 'Esotericy',

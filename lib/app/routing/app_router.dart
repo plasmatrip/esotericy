@@ -12,7 +12,7 @@ class AppRouter extends $AppRouter {
           children: [
             AutoRoute(page: DiaryView.page),
             AutoRoute(page: CardsView.page),
-            AutoRoute(page: FortuneTellingView.page),
+            AutoRoute(page: FortuneTellingGroupView.page),
             AutoRoute(page: NewsView.page),
             AutoRoute(page: SettingsView.page),
           ],
@@ -24,5 +24,9 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: AddLayoutView.page),
         AutoRoute(page: AddNoteView.page),
         AutoRoute(page: SelectedNoteView.page),
+        AutoRoute(page: SelectedFDGroupView.page),
+        AutoRoute(page: FortuneTellingView.page),
+        AutoRoute(page: AddFTView.page),
+        AutoRoute(page: SelectedFTView.page),
       ];
 }

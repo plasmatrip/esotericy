@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:esotericy/app/internal/const/boxes.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
-import 'package:esotericy/app/internal/widgets/blur_comtainer.dart';
-import 'package:esotericy/app/models/ft_group.dart';
+import 'package:esotericy/app/pages/fortune_telling/widgets/f_t_list.dart';
+import 'package:esotericy/app/pages/fortune_telling/widgets/fields/search_field.dart';
+import 'package:esotericy/app/repository/ft_repo.dart';
+import 'package:esotericy/app/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class FortuneTellingView extends StatelessWidget {
@@ -15,9 +15,8 @@ class FortuneTellingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Iterable ftList = Hive.box<FTGroup>(Boxes.ftgroup).values;
+    Iterable ftList = context.watch<FTRepo>().ftList();
     return Stack(
-      alignment: Alignment.center,
       children: [
         Image.asset(
           'assets/images/bg2.png',
@@ -25,55 +24,40 @@ class FortuneTellingView extends StatelessWidget {
           height: 812.h,
           fit: BoxFit.cover,
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 60.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Гадание', style: context.s36w800.copyWith(color: colors_3, letterSpacing: -2.w)),
-                  BlurContainer(
-                    width: 43,
-                    height: 35,
-                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                    child: SvgPicture.asset('assets/icons/Notebook.svg', width: 24.w, height: 24.h),
-                  ),
-                ],
+        Scaffold(
+          appBar: AppBar(
+            leading: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => AutoRouter.of(context).removeLast(),
+              child: Icon(Icons.arrow_back_ios, color: colors_3, size: 24.h),
+            ),
+            flexibleSpace: Image.asset(
+              'assets/images/ab_bg.png',
+              fit: BoxFit.cover,
+            ),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 1.h, color: const Color(0x999C859E)),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8.h),
+                bottomRight: Radius.circular(8.h),
               ),
-              SizedBox(height: 24.h),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.only(bottom: 100.h),
-                  children: [
-                    Wrap(
-                      spacing: 14.w,
-                      runSpacing: 26.h,
-                      children: [
-                        for (FTGroup ft in ftList) ...[
-                          BlurContainer(
-                            width: 164.w,
-                            height: 215.h,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 136.w,
-                                  child: Text(ft.name, style: context.s17w500.copyWith(color: colors_3)),
-                                ),
-                                Center(child: SvgPicture.asset(ft.icon)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
+          ),
+          body: Padding(
+            padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 24.h),
+            child: Column(
+              children: [
+                const SearchField(),
+                SizedBox(height: 24.h),
+                FTList(ftList: ftList),
+              ],
+            ),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: FilledButton(
+            onPressed: () async => AutoRouter.of(context).push(const AddFTView()),
+            style: context.extraBtn,
+            child: const Text('Добавить гадание'),
           ),
         ),
       ],

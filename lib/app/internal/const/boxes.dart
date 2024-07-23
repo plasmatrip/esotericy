@@ -5,4 +5,5 @@ class Boxes {
   static const String layout = 'layout_box';
   static const String notes = 'notes_box';
   static const String ftgroup = 'ftgroup_box';
+  static const String ft = 'ft_box';
 }

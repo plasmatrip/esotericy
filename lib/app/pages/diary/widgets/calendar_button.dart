@@ -22,7 +22,7 @@ class CalendarButton extends StatelessWidget {
         }
       },
       child: BlurContainer(
-        width: 40.w,
+        width: 40.h,
         height: 32.h,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
         child: SvgPicture.asset('assets/icons/Calendar.svg', width: 24.w, height: 24.h),

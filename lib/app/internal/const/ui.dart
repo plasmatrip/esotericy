@@ -23,6 +23,24 @@ extension UI on BuildContext {
   TextStyle get s11w400 => TextStyle(fontSize: 11.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w400);
   TextStyle get s8w400 => TextStyle(fontSize: 8.h, fontFamily: 'Neue Machina', fontWeight: FontWeight.w400);
 
+  TextStyle get textUnderline => TextStyle(
+        fontSize: 21.h,
+        fontFamily: 'Neue Machina',
+        fontWeight: FontWeight.w700,
+        color: Colors.transparent,
+        shadows: [
+          Shadow(
+            offset: Offset(0, -5.h),
+            color: colors_3,
+          ),
+        ],
+        decoration: TextDecoration.underline,
+        decorationStyle: TextDecorationStyle.solid,
+        decorationColor: colors_2,
+        decorationThickness: 3.h,
+        height: 0,
+      );
+
   ButtonStyle get extraBtn => FilledButton.styleFrom(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         backgroundColor: colors_2,

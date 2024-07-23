@@ -22,5 +22,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SelectedCardView.page),
         AutoRoute(page: SelectedLayoutView.page),
         AutoRoute(page: AddLayoutView.page),
+        AutoRoute(page: AddNoteView.page),
+        AutoRoute(page: SelectedNoteView.page),
       ];
 }

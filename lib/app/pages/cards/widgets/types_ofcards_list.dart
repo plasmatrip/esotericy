@@ -34,7 +34,7 @@ class TypesOfcardsList extends StatelessWidget {
                   color: selectedType == index ? colors_2 : colors_1,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(width: 0.5.h, color: selectedType == index ? colors_3 : stroke),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.h),
                   ),
                 ),
                 child: Center(

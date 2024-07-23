@@ -1,13 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:esotericy/app/internal/const/colors.dart';
 import 'package:esotericy/app/internal/const/ui.dart';
-import 'package:esotericy/app/internal/widgets/blur_comtainer.dart';
 import 'package:esotericy/app/pages/cards/widgets/cards_view_button.dart';
 import 'package:esotericy/app/pages/cards/widgets/layout_list.dart';
-import 'package:esotericy/app/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
 class CardsView extends StatelessWidget {

@@ -24,8 +24,9 @@ class CardsRepo with ChangeNotifier {
     notifyListeners();
   }
 
-  Iterable imagesList() {
-    return cardsRepo.values.where((element) => (element as Cards).type == pathName[_selectedType]);
+  Iterable imagesList({int? typeOfCards}) {
+    typeOfCards ??= _selectedType;
+    return cardsRepo.values.where((element) => (element as Cards).type == pathName[typeOfCards!]);
   }
 
   Iterable layout() {

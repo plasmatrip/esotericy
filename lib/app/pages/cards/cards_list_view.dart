@@ -53,6 +53,7 @@ class CardsListView extends StatelessWidget {
                     BlurContainer(
                       width: 343.w,
                       child: Wrap(
+                        alignment: WrapAlignment.center,
                         spacing: 8.w,
                         runSpacing: 14.h,
                         children: [

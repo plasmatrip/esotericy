@@ -43,9 +43,18 @@ class _AppState extends State<App> {
               builder: (context) {
                 return ScreenUtilInit(
                   designSize: const Size(375, 812),
+                  // minTextAdapt: true,
+                  // splitScreenMode: true,
+                  // useInheritedMediaQuery: true,
                   builder: (context, child) {
                     debugPaintSizeEnabled = false;
+                    // ScreenUtil.configure(
+                    //   data: MediaQuery.of(context),
+                    // );
                     return MaterialApp.router(
+                      // builder: (context, child) {
+                      //   return DevicePreview.appBuilder(context, child!);
+                      // },
                       debugShowCheckedModeBanner: false,
                       title: 'Esotericy',
                       localizationsDelegates: const [
